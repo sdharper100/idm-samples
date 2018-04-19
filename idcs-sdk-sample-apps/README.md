@@ -10,8 +10,6 @@ The SDK wraps some Oracle Identity Cloud Service calls that are made by the appl
 
 The SDKs can be downloaded from the **Downloads** page of the Identity Cloud Service console, as zip files, for the following languages:
 - **Java**: The file you download contains a *jar* library file.
-- **JavaScript/Node.js**: The file you download contains a passport strategy library file (see http://passportjs.org/).
-- **Python**: The file you download contains two python files: *IdcsClient.py* and *Constants.py*.
 
 ## Tutorials and Sample Applications
 
@@ -20,8 +18,6 @@ To understand how to use the SDKs, Oracle provides sample web applications for e
 Learn how to configure SSO between Oracle Identity Cloud Service and the sample applications by using one of the following tutorials:
 
 - [Use Oracle Identity Cloud Service's Software Development Kit (SDK) for Authentication in Java Web Applications](https://apexapps.oracle.com/pls/apex/f?p=44785:112:0::::P112_CONTENT_ID:22663)
-- [Use Oracle Identity Cloud Service's Software Development Kit (SDK) for Authentication in Node.js Web Applications](https://apexapps.oracle.com/pls/apex/f?p=44785:112:0::::P112_CONTENT_ID:22661)
-- [Use Oracle Identity Cloud Service's Software Development Kit (SDK) for Authentication in Python Web Applications](https://apexapps.oracle.com/pls/apex/f?p=44785:112:0::::P112_CONTENT_ID:22662)
 
 The sample applications implement two use cases: one for user authentication and the other for  accessing detailed information from the logged-in user.
 
@@ -33,14 +29,16 @@ This graphical overview explains the flow of events, calls, and responses betwee
 
 **Detailed flow:**
 1. The user requests an authenticated resource.
-2. The authentication module generates a request-authorization-code URL and redirects the user's browser.
-3. The Oracle Identity Cloud Service **Sign In** page is presented.
-4. The user submits their Oracle Identity Cloud Service login credentials.
-5. Oracle Identity Cloud Service issues an authorization code.
-6. The sample application calls Oracle Identity Cloud Service to exchange the authorization code for an access token.
-7. Oracle Identity Cloud Service issues the access token.
-8. A session is established, and the user is redirected to the **Home** page.
-9. The **Home** page of the sample application is presented.
+2. The authentication module generates a request-authorization-code URL for Oracle Identity Cloud Service and sends a redirect response to the web browser.
+3. The web browser calls the URL.
+4. The Oracle Identity Cloud Service Sign In page appears.
+5. The user submits their Oracle Identity Cloud Service login credentials.
+6. Oracle Identity Cloud Service issues an authorization code.
+7. The web application calls Oracle Identity Cloud Service to exchange the authorization code for a user access token.
+8. Oracle Identity Cloud Service issues the access token.
+9. A session is established, and the user is redirected to the Home page.
+10. The Home page of the web application appears.
+
 
 #### Use Case #2: Get User Details
 
@@ -50,10 +48,10 @@ The image illustrates the get user details flow between the user’s web browser
 ![Get User Details Sequence Diagram](images/SDK_SequenceDiagramGetDetails.png)
 
 **Detailed flow:**
-1. The user requests the **/myProfile** resource.
-2. The sample application calls Oracle Identity Cloud Service using the SDK, which uses the access token stored in the user session as a parameter.
-3. The user's details are sent to the sample application as a JSON object.
-4. The **My Profile** page renders the JSON object as an HTML file.
+1. The user requests the /myProfile resource.
+2. The web application calls Oracle Identity Cloud Service using the SDK, which uses the access token stored in the user session as a parameter.
+3. The user's details are sent to the web application as a JSON object.
+4. The My Profile page renders the JSON object as HTML content.
 
 ## License
 
